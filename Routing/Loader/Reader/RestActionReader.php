@@ -360,7 +360,7 @@ class RestActionReader
     private function generateUrlParts(array $resources, array $arguments, $httpMethod)
     {
         $urlParts = array();
-        foreach ($resources as $i => $resource) {
+        foreach (array_reverse($resources) as $i => $resource) {
             // if we already added all parent routes paths to URL & we have
             // prefix - add it
             if (!empty($this->routePrefix) && $i === count($this->parents)) {
@@ -389,7 +389,7 @@ class RestActionReader
             }
         }
 
-        return $urlParts;
+        return array_reverse($urlParts);
     }
 
     /**
